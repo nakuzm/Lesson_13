@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Задание Nr. 13</title>
+
+  </head>
+  <body>
+    <script>
+      'use strict';
+
+        let name = 'Наталия', age = 27;
+
+        writeOut`Меня зовут ${name}. Мне ${age} лет.`;
+        
+        name = undefined, age = undefined;
+                
+        let CITY = 'Рига';
+        
+        if (CITY) writeOut`${CITY}`;
+        
+        let book = {
+          title: 'Осознанность',
+          author: 'Ошо',
+          pages: 104
+        }
+        
+        writeOut`Недавно я прочитала книгу "${book.title}", написанную автором ${book.author}, 
+                я осилила все ${book.pages}, мне она очень понравилась.`;
+                
+        book = {
+          book1: {
+            title: 'Осознанность',
+            author: 'Ошо',
+            pages: 104
+          },
+          book2: {
+            title: 'Две жизни',
+            author: 'Антарова Конкордия',
+            pages: 1131
+          }
+        }
+        
+        writeOut`Недавно я прочитала книги "${book.book1.title}" и "${book.book2.title}", 
+                написанные соответственно авторами ${book.book1.author} и ${book.book2.author}, 
+                я осилила в сумме ${book.book1.pages + book.book2.pages} страниц, не ожидала от себя подобного.`;
+        
+        function writeOut(strings, ...values) {
+          let messageContainer = document.createElement('div');
+          document.body.lastElementChild.insertAdjacentElement("beforeBegin", messageContainer);
+          
+          let str = "";
+          for(let i=0; i<values.length; i++) {
+            str += strings[i];
+            str += values[i];
+          }
+          str += strings[strings.length-1];
+          
+          messageContainer.innerHTML = str;
+        }
+
+    </script>   
+  </body>
+</html>
